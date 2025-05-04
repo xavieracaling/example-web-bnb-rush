@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1YP9VF5QJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1YP9VF5QJN');
+
+    window.addEventListener('load', () => {
+    setTimeout(() => {
+      const modal = new bootstrap.Modal(document.getElementById('updateModal'));
+      modal.show();
+    }, 500); // Show after 1 second
+  });
+  </script>
+
+  <!-- Open Graph & Twitter Meta -->
+  <meta name="description" content="Free Play to Earn BNB Game">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryptorusher.com">
+  <meta property="og:title" content="Crypto Rusher">
+  <meta property="og:description" content="FREE PLAY TO EARN GAME">
+  <meta property="og:image" content="https://cryptorusher.com/cry.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cryptorusher.com/cry.png">
+
+  <link rel="icon" href="cry.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Rusher - Free Play to Earn BNB Game</title>
+
+  <!-- AOS Animation -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Bootstrap for Carousel -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+     @media (max-width: 576px) {
+    #updateModal .modal-content {
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+    #updateModal .modal-title {
+      font-size: 0.9rem;
+    }
+
+    #updateModal img {
+      width: 28px;
+      height: 28px;
+    }
+
+    #updateModal ul li {
+      font-size: 0.85rem;
+    }
+
+    #updateModal .btn {
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+    /* ===== Base Styles ===== */
+    body {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    /* ===== Hero & Logo ===== */
+    .hero-logo {
+      position: relative;
+      margin: -50px auto 30px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 3px solid #f9d900;
+      box-shadow: 0 0 30px rgba(249,217,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      animation: logo-pulse 2s infinite;
+    }
+    @keyframes logo-pulse {
+      0%,100% { transform: scale(0.95); }
+      50% { transform: scale(1); }
+    }
+    .hero-logo::before {
+      content: '';
+      position: absolute;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      border: 2px solid rgba(249,217,0,0.3);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0); }
+      to { transform: rotate(360deg); }
+    }
+    .hero-logo img {
+      width: 80%; height: 80%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px #f9d900);
+    }
+    .hero {
+      position: relative;
+      padding: 120px 0 100px;
+      background: linear-gradient(45deg, #111 30%, #1a1a1a 100%);
+      text-align: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -50px; left: 50%;
+      transform: translateX(-50%);
+      width: 80%; height: 50px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.075) 0%, rgba(249,217,0,0) 70%);
+    }
+    .hero h1 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 4rem; color: #f9d900;
+      text-shadow: 0 0 20px rgba(249,217,0,0.5);
+    }
+    .hero p {
+      color: #fff !important;
+      font-size: 1.2rem; margin-top: 20px;
+      opacity: 0.9;
+    }
+    .btn-primary, .btn-docs {
+      padding: 15px 30px; font-size: 1.1rem;
+      border-radius: 5px; text-transform: uppercase;
+      margin: 10px; display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .btn-primary {
+      background-color: #f9d900; color: #111;
+    }
+    .btn-primary:hover {
+      background-color: #ffcb00; transform: translateY(-3px);
+    }
+    .btn-docs {
+      background-color: #444;
+      color: #fff;
+    }
+    .btn-docs:hover {
+      background-color: #666; transform: translateY(-3px);
+    }
+
+    /* ===== Gameplay Carousel ===== */
+    #showcase {
+      background: #1a1a1a;
+      padding: 60px 0;
+    }
+    #gameCarousel {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 3px solid #f9d900;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(249, 217, 0, 0.2);
+    }
+    #gameCarousel .card-base {
+      margin: 0 10px;
+      border: 3px solid #f9d900;
+      transition: transform 0.3s ease;
+    }
+    #gameCarousel .card-base:hover {
+      transform: scale(1.02);
+    }
+    #gameCarousel .card-base img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+      max-height: 50vh;
+      min-height: 250px;
+    }
+    .carousel-indicators [data-bs-target] {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #f9d900;
+      background: transparent;
+    }
+    .carousel-indicators .active {
+      background: #f9d900;
+      box-shadow: 0 0 10px #f9d900;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      filter: drop-shadow(0 0 5px #f9d900);
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      border: 2px solid #f9d900;
+      border-radius: 10px;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem;
+    }
+    .carousel-caption h5 {
+      font-family: 'Press Start 2P', cursive;
+      color: #f9d900;
+      text-shadow: 0 0 10px rgba(249, 217, 0, 0.5);
+    }
+    @media (max-width: 576px) {
+  .carousel-caption h5 {
+    font-size: 1.1rem;
+  }
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+}
+    /* ===== How It Works Section ===== */
+    #earn-mechanics {
+      background: #1a1a1a;
+      padding: 60px 0;
+    }
+    .mech-card {
+      background: #2d2d2d;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 1rem;
+      border: 2px solid #f9d900;
+      transition: all 0.3s ease;
+    }
+    .mech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(249,217,0,0.2);
+    }
+    .mech-icon {
+      font-size: 2.5rem;
+      color: #f9d900;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .mech-card h3 {
+      font-family: 'Press Start 2P', cursive;
+      color: #f9d900;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .mech-card ul {
+      list-style: none;
+      padding-left: 0;
+      color: #fff;
+    }
+    .mech-card li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .mech-card li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #f9d900;
+    }
+
+    /* ===== Team Section ===== */
+    #team {
+      background: #222; padding: 60px 0; text-align: center;
+    }
+    #team h2 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 2.5rem; color: #f9d900;
+    }
+    .team-member {
+      margin: 30px; background: #333;
+      border: 2px solid #444; border-radius: 15px;
+      padding: 25px; width: 280px; display: inline-block;
+      transition: transform 0.3s ease;
+      color: #fff;
+    }
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(255,255,255,0.2);
+    }
+    .team-icon i {
+      font-size: 60px; color: #f9d900; margin-bottom: 15px;
+    }
+    .team-name {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1.2rem;
+    }
+    .team-role, .team-link {
+      font-size: 1rem; margin-top: 10px; display: block;
+      color: #eee;
+    }
+    .team-link {
+      color: #fff !important; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity 0.2s ease;
+    }
+    .team-link:hover { opacity: 0.8; }
+
+    /* ===== Roadmap Styles ===== */
+    .roadmap-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .roadmap-item {
+      position: relative;
+      background: #2d2d2d;
+      border: 1px solid #333;
+      border-radius: 0.75rem;
+      padding: 2.5rem 1.5rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      color: #fff;
+    }
+    .roadmap-item:hover {
+      transform: translateY(-4px);
+    }
+    .roadmap-item .icon {
+      font-size: 2rem; color: #f9d900;
+      margin-top: 1rem; margin-bottom: 0.75rem;
+    }
+    .roadmap-item .status {
+      position: absolute; top:0.75rem; left:0.75rem;
+      padding:0.25rem 0.75rem; border-radius:0.25rem;
+      font-size:0.75rem; font-weight:600; text-transform:uppercase;
+      z-index:2;
+    }
+    .status.completed   { background:#28a745; color:#fff !important; }
+    .status.in-progress { background:#ffc107; color:#000 !important; }
+    .status.not-started { background:#6c757d; color:#fff !important; }
+    .roadmap-item h4 {
+      margin-top:1rem; font-size:1.125rem; color:#f9d900;
+      margin-bottom:0.75rem;
+    }
+    .roadmap-item p {
+      font-size:0.95rem; line-height:1.5;
+      color: #fff !important;
+      opacity: 0.9;
+    }
+
+    /* ===== Telegram Button ===== */
+    .btn-telegram {
+      background: #0088cc !important;
+      color: #fff !important;
+      border: 2px solid #fff;
+      position: relative;
+      animation: pulse-telegram 2s infinite;
+    }
+    .btn-telegram i {
+      margin-right: 10px;
+      animation: beat 1s infinite;
+    }
+    @keyframes pulse-telegram {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes beat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* ===== Responsive Adjustments ===== */
+    @media (max-width: 1200px) {
+      .hero h1 { font-size: 3rem; }
+      #gameCarousel .card-base img { max-height: 45vh; }
+    }
+    @media (max-width: 768px) {
+      .hero-logo { width:120px; height:120px; margin:-30px auto 20px; }
+      .hero h1 { font-size:2rem; }
+      .team-member { width:90%; }
+      .roadmap-item { padding: 1.5rem; }
+      #team h2, #roadmap h2 { font-size:2rem; }
+      .btn-primary, .btn-docs { padding:12px 25px; font-size:1rem; }
+      #gameCarousel .card-base img { max-height: 400px; }
+    }
+    @media (max-width: 576px) {
+      #gameCarousel .card-base img { max-height: 300px; }
+      .mech-card { margin: 1rem 0; }
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <!-- Add this right after <body> tag -->
+    <nav class="navbar fixed-top game-nav">
+      <div class="container-fluid">
+        <!-- Logo + Title -->
+        <a class="navbar-brand" href="#">
+          <div class="brand-wrapper">
+            <img src="cry.png" alt="Logo" class="nav-logo">
+            <span class="brand-text">CRYPTO RUSHER</span>
+          </div>
+        </a>
+    
+        <!-- Buttons -->
+        <div class="d-flex gap-3 align-items-center">
+          <a href="docs" class="nav-btn docs-btn">
+            <i class="fas fa-file-code btn-icon"></i>
+            <span>DOCS</span>
+          </a>
+          
+          <button class="nav-btn updates-btn" data-bs-toggle="modal" data-bs-target="#updateModal">
+            <i class="fas fa-bullhorn btn-icon"></i>
+            <span>UPDATES</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    
+    <style>
+    .game-nav {
+      background: rgba(26,26,26,0.97) !important;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(249,217,0,0.15);
+      padding: 0.7rem 1.5rem;
+    }
+    
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border: 2px solid #f9d900;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(249,217,0,0.3);
+    }
+    
+    .brand-text {
+      font-family: 'Press Start 2P', cursive;
+      color: #f9d900 !important;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.75rem;
+      text-decoration: none !important;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+    
+    .updates-btn {
+      background: rgba(249,217,0,0.12);
+      color: #f9d900 !important;
+      border-color: rgba(249,217,0,0.25);
+    }
+    
+    .docs-btn {
+      background: rgba(156,39,176,0.12);
+      color: #9c27b0 !important;
+      border-color: rgba(156,39,176,0.25);
+    }
+    
+    .btn-icon {
+      font-size: 1.1rem;
+    }
+    
+    /* Hover Effects */
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .updates-btn:hover {
+      background: rgba(249,217,0,0.2);
+      box-shadow: 0 0 15px rgba(249,217,0,0.2);
+    }
+    
+    .docs-btn:hover {
+      background: rgba(156,39,176,0.2);
+      box-shadow: 0 0 15px rgba(156,39,176,0.2);
+    }
+    
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .brand-text { font-size: 0.9rem; }
+      .nav-logo { width: 28px; height: 28px; }
+      .nav-btn { padding: 6px 12px; font-size: 0.65rem; }
+      .btn-icon { font-size: 0.9rem; }
+    }
+    
+    @media (max-width: 480px) {
+      .brand-text { font-size: 0.7rem; }
+      .nav-btn span { display: none; }
+      .nav-btn { padding: 8px; border-radius: 50%; }
+      .btn-icon { margin: 0; }
+    }
+    </style>
+
+<!-- Add this CSS -->
+<style>
+.btn-updates {
+  background: rgba(249,217,0,0.15);
+  color: #f9d900;
+  border: 1px solid #f9d900;
+  border-radius: 4px;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-updates:hover {
+  background: rgba(249,217,0,0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(249,217,0,0.2);
+}
+</style>
+  <!-- Update Modal -->
+  <!-- AOS Animation Library (Add in <head> if not included) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content text-white" style="background: rgba(26,26,26,0.85); backdrop-filter: blur(10px); border: 2px solid #f9d900; border-radius: 20px; box-shadow: 0 0 20px rgba(249, 217, 0, 0.3);">
+
+      <!-- Header -->
+      <div class="modal-header" style="background: linear-gradient(90deg, #f9d900, #f39c12); border-top-left-radius: 20px; border-top-right-radius: 20px;">
+        <h5 class="modal-title" id="updateModalLabel" style="color: #1a1a1a; font-family: 'Press Start 2P', cursive;">
+          🚀 Game Updates & Web3 Listings
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body" data-aos="zoom-in" data-aos-duration="600">
+
+        <!-- Web3 Listings -->
+        <div style="background: #2c2c2c; border: 1px solid #f9d900; padding: 1rem 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+          <p style="font-size: 1rem;">
+            🎉 <strong>Exciting News!</strong><br>
+            We're now listed on top Web3 gaming platforms!
+          </p>
+
+          <!-- Play2Earn -->
+          <div class="d-flex align-items-center mb-3">
+            <img src="https://playtoearn.net/favicon.ico" alt="Play2Earn" style="width: 36px; height: 36px; margin-right: 1rem; border-radius: 6px;">
+            <div>
+              <strong style="color: #f9d900;">Play2Earn.net</strong> <span style="font-size: 0.9rem; color: #ccc;">(May 3, 2025)</span><br>
+              <a href="https://playtoearn.com/blockchaingame/cryptorushers" target="_blank" style="color: #00ffe5; text-decoration: none;">🔗 View Listing</a>
+            </div>
+          </div>
+
+          <!-- DappRadar -->
+          <div class="d-flex align-items-center">
+            <img src="/dapp.png" alt="DappRadar" style="width: 36px; height: 36px; margin-right: 1rem; border-radius: 6px;">
+            <div>
+              <strong style="color: #f9d900;">DappRadar</strong> <span style="font-size: 0.9rem; color: #ccc;">(May 2, 2025)</span><br>
+              <a href="https://dappradar.com/dapp/cryptorusher" target="_blank" style="color: #00ffe5; text-decoration: none;">🔗 View Listing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game Updates -->
+        <ul style="list-style: none; padding-left: 0; font-size: 0.95rem;">
+          <li class="mb-4">
+            <strong style="color:#f9d900;">🔧 Update 5.2.25</strong><br/>
+            - Improved reward system<br/>
+            - Enhanced UI/UX for mobile browsers
+          </li>
+          <li class="mb-4">
+            <strong style="color:#f9d900;">🔧 Update 5.3.25</strong><br/>
+            <strong>XP Rewards:</strong><br/>
+            🔹 Levels 1–10 now grant ⚡️ 40–200 XP per action<br/><br/>
+            <strong>Level-Up Requirements:</strong><br/>
+            🔸 Levels 1–10 → 🖱 50 clicks to level up<br/>
+            🔸 Levels 11–30 → 🖱 100 clicks + ⏳ 120s cooldown<br/>
+            🔸 Levels 31–60 → 🖱 150 clicks (💡 Advanced Stage)
+          </li>
+          <li class="mb-4">
+            <strong style="color:#f9d900;">🔧 Update 5.4.25</strong><br/>
+            - Fixed issue where the keypad was covered by the game when setting a name on mobile
+            - Fixed RPC URL incompatibility with certain MetaMask configurations
+          </li>
+          
+        </ul>
+        
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning fw-bold px-4 py-2" data-bs-dismiss="modal">🎮 Start Playing</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+  <br>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-logo" data-aos="zoom-in">
+        <img src="cry.png" alt="Crypto Rusher Logo">
+      </div>
+      
+      <!-- Launch Date Badge -->
+      <div class="launch-date" 
+           style="margin: 1rem auto;
+                  background: linear-gradient(45deg, rgba(249,217,0,0.15), rgba(255,140,0,0.15));
+                  padding: 0.5rem 1.5rem;
+                  border-radius: 25px;
+                  display: inline-block;
+                  border: 1px solid rgba(249,217,0,0.3);
+                  backdrop-filter: blur(3px);
+                  animation: subtlePulse 3s infinite;">
+        <p style="margin: 0;
+                  font-family: 'Press Start 2P', cursive;
+                  color: #fff;
+                  font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+                  letter-spacing: 1px;
+                  text-shadow: 0 0 8px rgba(249,217,0,0.3);">
+          🚀 LAUNCHED MAY 1, 2025 🚀
+        </p>
+      </div>
+      <h1 data-aos="zoom-in">CRYPTO RUSHER</h1>
+      <p data-aos="fade-up" data-aos-delay="100">
+        Click every day to earn BNB and Tap Tickets! Purchase boosters and invite friends to maximize your rewards!
+      </p>
+      <a  href="/game" class="btn btn-primary" 
+   style="pointer-events: auto; opacity: 1; cursor: pointer;" 
+   data-aos="fade-up" 
+   data-aos-delay="200">
+   <i class="fas fa-gamepad"></i> PLAY NOW
+</a>
+      <a href="https://t.me/crypto_rusher0" class="btn btn-telegram" data-aos="fade-up" data-aos-delay="400">
+        <i class="fab fa-telegram-plane"></i> JOIN OUR TELEGRAM
+      </a>
+      
+    
+    </div>
+  </section>
+  <style>
+    @keyframes subtlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.02); opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
+      .launch-date p {
+        font-size: 0.55rem !important;
+        padding: 0.3rem 1rem !important;
+      }
+    }
+    </style>
+
+<style>
+@keyframes bannerEntry {
+from { transform: translateY(-100%); }
+to { transform: translateY(0); }
+}
+
+@keyframes rocketPulse {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-3px); }
+}
+
+@media (max-width: 768px) {
+.launch-banner {
+  top: 3rem;
+  padding: 0.4rem 0;
+}
+
+.launch-banner p {
+  font-size: clamp(0.55rem, 3vw, 0.7rem) !important;
+  line-height: 1.4;
+  letter-spacing: 0;
+  padding: 0 0.5rem !important;
+}
+}
+
+@media (max-width: 480px) {
+.launch-banner {
+  top: 2.8rem;
+}
+
+.launch-banner p {
+  font-size: 0.5rem !important;
+}
+}
+</style>
+<section class="hero" id="hero">
+  <div class="container">
+    <!-- Add this new section -->
+    <div class="bsc-cta" data-aos="zoom-in" data-aos-delay="300" 
+         style="position: relative; margin: 2rem 0; padding: 6rem;
+                background: linear-gradient(45deg, rgba(249,217,0,0.15) 0%, transparent 50%);
+                border-left: 3px solid #f9d900;
+                border-right: 3px solid #f9d900;
+                border-radius: 15px;
+                text-align: center;
+                overflow: hidden;">
+      
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                  background: repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(249,217,0,0.05) 10px,
+                    rgba(249,217,0,0.05) 20px
+                  );
+                  z-index: -1;"></div>
+
+      <h2 style="font-family: 'Press Start 2P', cursive; 
+                 color: #f9d900;
+                 font-size: clamp(1rem, 3vw, 1.8rem);
+                 text-transform: uppercase;
+                 margin: 0 0 1rem 0;
+                 text-shadow: 0 0 15px rgba(249,217,0,0.4);
+                 letter-spacing: 2px;">
+        🚀 ARE YOU READY TO <span style="color: #fff;">PLAY & EARN</span> 🚀<br>
+        <span style="display: inline-block; margin-top: 0.5rem; font-size: 0.6em;">
+          ON BINANCE SMART CHAIN NETWORK??
+          
+        </span>
+      </h2>
+
+      
+    </div>
+
+    <!-- Existing compatibility badges -->
+    <div class="compatibility-badges" style="margin-top: 1rem;" data-aos="fade-up">
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+@media (max-width: 768px) {
+  .bsc-cta h2 {
+    font-size: clamp(0.8rem, 4vw, 1.2rem) !important;
+    line-height: 1.4;
+  }
+  
+  .bsc-cta .btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+</style>
+  <!-- Gameplay Showcase -->
+  <section id="showcase" class="py-5 bg-dark text-white">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up" 
+          style="font-family: 'Press Start 2P', cursive; color: #f9d900; text-shadow: 0 0 15px rgba(249,217,0,0.5);">
+        GAMEPLAY
+      </h2>
+      
+      <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="Gameplay showcase carousel" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active">
+            <div class="position-relative">
+              <img src="1.png" class="d-block w-100 rounded shadow" alt="Gameplay showing daily BNB rewards">
+              <div class="carousel-caption text-center">
+                <h5 class="fw-bold fs-5 fs-md-4 fs-lg-3">Daily Rewards</h5>
+                <p class="fs-6 fs-md-5">Claim your daily BNB rewards!</p>
+              </div>
+             
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="position-relative">
+              <img src="2.png" class="d-block w-100 rounded shadow" alt="Gameplay showing powerups to boost earnings">
+              <div class="carousel-caption text-center">
+                <h5 class="fw-bold fs-5 fs-md-4 fs-lg-3">Grind Daily</h5>
+                <p class="fs-6 fs-md-5">Grind leveling up for tap tickets to get free boosters!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="position-relative">
+              <img src="3.png" class="d-block w-100 rounded shadow" alt="Gameplay showing shop for boosters">
+              <div class="carousel-caption text-center">
+                <h5 class="fw-bold fs-5 fs-md-4 fs-lg-3">Shop</h5>
+                <p class="fs-6 fs-md-5">Buy or redeem boosters to earn x2–x3 returns!</p>
+              </div>
+             
+            </div>
+          </div>
+  
+        </div>
+  
+        <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev" aria-label="Previous slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next" aria-label="Next slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+  
+      </div>
+    </div>
+  </section>
+  
+
+
+  <!-- Add this after the "How It Works" section -->
+<section id="earning-modes" class="py-5" style="background: #1a1a1a;">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up" 
+        style="font-family: 'Press Start 2P', cursive; 
+               color: #f9d900;
+               text-shadow: 0 0 20px rgba(249,217,0,0.4);
+               border-bottom: 3px solid #f9d900;
+               display: inline-block;
+               padding: 0 2rem 1rem;">
+      🚀 Two Dynamic Earning Modes 🪙<br>
+      <span style="font-size: 1.2rem; display: block; margin-top: 1rem;">Designed to Engage & Reward Players</span>
+    </h2>
+
+    <div class="row g-4">
+      <!-- Earn BNB Mode -->
+      <div class="col-md-6" data-aos="flip-left">
+        <div class="mode-card" style="background: #2d2d2d; border-radius: 15px; padding: 2rem; border: 2px solid #f9d900;">
+          <div class="mode-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="mode-icon" style="font-size: 2.5rem; color: #f9d900;">💰</div>
+            <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900; margin: 0;">Earn BNB Mode</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; color: #fff;">
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">🎯</span>
+              Daily 50 taps with high success rate
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">⚡</span>
+              Booster multipliers (1.4x-3x) from BNB/Tickets
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">🔄</span>
+              Progressive rewards until booster expires
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">📈</span>
+              Daily engagement = Compounding returns
+            </li>
+          </ul>
+          <div class="mode-footer" style="background: rgba(249,217,0,0.1); padding: 1rem; border-radius: 8px;">
+            <p style="margin: 0; color: #f9d900;">
+              <strong>Investor Favorite:</strong> Turn BNB into daily yields through strategic booster purchases!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adventure Mode -->
+      <div class="col-md-6" data-aos="flip-right">
+        <div class="mode-card" style="background: #2d2d2d; border-radius: 15px; padding: 2rem; border: 2px solid #f9d900;">
+          <div class="mode-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="mode-icon" style="font-size: 2.5rem; color: #f9d900;">🏔️</div>
+            <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900; margin: 0;">Adventure Mode</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; color: #fff;">
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">🎁</span>
+              Free-to-play with Tap Ticket rewards
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">📈</span>
+              Ticket value grows with level progression
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">🔄</span>
+              Redeem tickets for boosters in shop
+            </li>
+            <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+              <span style="position: absolute; left: 0;">🌐</span>
+              Accessible to all player types
+            </li>
+          </ul>
+          <div class="mode-footer" style="background: rgba(249,217,0,0.1); padding: 1rem; border-radius: 8px;">
+            <p style="margin: 0; color: #f9d900;">
+              <strong>Player Advantage:</strong> Convert skill into rewards without initial investment!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5" data-aos="zoom-in">
+      <p style="color: #fff; font-size: 1.1rem;">
+        🔥 <strong>Dual-Mode Synergy:</strong> Combine both modes for exponential earning potential! 🔥
+      </p>
+    </div>
+  </div>
+</style>
+
+
+<section id="economy" style="background: #1a1a1a; padding: 4rem 0;">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up"
+        style="font-family: 'Press Start 2P', cursive; 
+               color: #f9d900;
+               text-shadow: 0 0 20px rgba(249,217,0,0.4);
+               border-bottom: 3px solid #f9d900;
+               display: inline-block;
+               padding: 0 2rem 1rem;">
+      💎 Sustainable Web3 Economy
+    </h2>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="eco-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="eco-icon" style="font-size: 3rem; color: #f9d900; text-align: center;">🔄</div>
+          <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900; text-align: center;">Circular Economy</h3>
+          <ul style="color: #fff; padding-left: 1.5rem;">
+        
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+        <div class="eco-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="eco-icon" style="font-size: 3rem; color: #f9d900; text-align: center;">📈</div>
+          <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900; text-align: center;">Long-Term Vision</h3>
+          <ul style="color: #fff; padding-left: 1.5rem;">
+         
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="eco-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="eco-icon" style="font-size: 3rem; color: #f9d900; text-align: center;">🛡️</div>
+          <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900; text-align: center;">Anti-Inflation</h3>
+          <ul style="color: #fff; padding-left: 1.5rem;">
+      
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+</section>
+<!-- Add this after the Earn BNB Mode section -->
+<section id="booster-system" style="background: #1a1a1a; padding: 4rem 0;">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up"
+        style="font-family: 'Press Start 2P', cursive; 
+               color: #f9d900;
+               text-shadow: 0 0 20px rgba(249,217,0,0.4);
+               border-bottom: 3px solid #f9d900;
+               display: inline-block;
+               padding: 0 2rem 1rem;">
+      ⚡ Turbo Boost Your Earnings 🚀
+    </h2>
+
+    <div class="row g-4">
+      <!-- C1 Booster -->
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="booster-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="booster-header" style="text-align: center;">
+            <div style="font-size: 2.5rem;">🚀</div>
+            <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900;">C1 BOOSTER</h3>
+            <div class="multiplier-badge" style="background: #f9d900; color: #1a1a1a; padding: 0.5rem 1rem; border-radius: 25px; font-weight: bold;">
+              2X MULTIPLIER
+            </div>
+          </div>
+          <div class="booster-details mt-3">
+            <ul style="color: #fff; padding-left: 1rem;">
+              <li>💰 Min Price: 0.01 BNB or 70 Tap Tickets</li>
+              <li>⏳ Duration: 45 Days</li>
+              <li>🎯 Daily Taps: 50 Guaranteed</li>
+              <li>🔥 Success Rate: 80%</li>
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- B1 Booster -->
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+        <div class="booster-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="booster-header" style="text-align: center;">
+            <div style="font-size: 2.5rem;">🚀🚀</div>
+            <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900;">B1 BOOSTER</h3>
+            <div class="multiplier-badge" style="background: #ff9900; color: #1a1a1a; padding: 0.5rem 1rem; border-radius: 25px; font-weight: bold;">
+              2.5X MULTIPLIER
+            </div>
+          </div>
+          <div class="booster-details mt-3">
+            <ul style="color: #fff; padding-left: 1rem;">
+              <li>💰 Min Price: 0.45 BNB or 3,150 Tickets</li>
+              <li>⏳ Duration: 60 Days</li>
+              <li>🎯 Daily Taps: 50 Guaranteed</li>
+              <li>🔥 Success Rate: 85%</li>
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 Booster -->
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="booster-card" style="background: #2d2d2d; padding: 2rem; border-radius: 15px; border: 2px solid #f9d900;">
+          <div class="booster-header" style="text-align: center;">
+            <div style="font-size: 2.5rem;">🚀🚀🚀</div>
+            <h3 style="font-family: 'Press Start 2P', cursive; color: #f9d900;">A1 BOOSTER</h3>
+            <div class="multiplier-badge" style="background: #ff3300; color: #fff; padding: 0.5rem 1rem; border-radius: 25px; font-weight: bold;">
+              3X MULTIPLIER
+            </div>
+          </div>
+          <div class="booster-details mt-3">
+            <ul style="color: #fff; padding-left: 1rem;">
+              <li>💰 Min Price: 1.1 BNB or 7,700 Tickets</li>
+              <li>⏳ Duration: 30 Days</li>
+              <li>🎯 Daily Taps: 50 Guaranteed</li>
+              <li>🔥 Success Rate: 90%</li>
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="booster-note mt-5" style="background: rgba(249,217,0,0.1); padding: 2rem; border-radius: 15px; text-align: center;">
+      <h4 style="font-family: 'Press Start 2P', cursive; color: #f9d900;">❗ ESSENTIAL REQUIREMENT</h4>
+      <p style="color: #fff; font-size: 1.1rem;">
+        You MUST acquire at least 1 booster to start earning BNB daily!<br>
+        Higher boosters = Faster earnings ⚡<br>
+        <!-- <a href="game" class="btn btn-primary mt-3" style="font-family: 'Press Start 2P', cursive;">
+          🎮 PLAY NOW TO START EARNING
+        </a> -->
+      </p>
+    </div>
+  </div>
+</section>
+  <!-- How It Works Section -->
+  <section id="earn-mechanics" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up" 
+          style="font-family: 'Press Start 2P', cursive; color: #f9d900; text-shadow: 0 0 15px rgba(249,217,0,0.5);">
+        💡 HOW TO EARN BNB?
+      </h2>
+
+      <div class="row" data-aos="fade-up">
+        <!-- Earning Methods -->
+        <div class="col-md-6 mb-4">
+          <div class="mech-card" data-aos="zoom-in">
+            <div class="mech-icon"><i class="fas fa-coins"></i></div>
+            <h3>FREE TO PLAY</h3>
+            <ul>
+              <li>🎟️ Earn Tap Tickets through referrals</li>
+              <li>📈 Get tickets by leveling up in Adventure Mode</li>
+              <li>💰 Convert tickets to boosters</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Booster System -->
+        <div class="col-md-6 mb-4">
+          <div class="mech-card" data-aos="zoom-in" data-aos-delay="150">
+            <div class="mech-icon"><i class="fas fa-rocket"></i></div>
+            <h3>BOOSTER SYSTEM</h3>
+            <ul>
+              <li>🔥 Start with 1.4x multiplier</li>
+              <li>📈 Grow to 1.8x+ with referrals</li>
+              <li>💸 Earn daily BNB with 50 clicks</li>
+              <li>⚖️ Balanced economy system</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Referral System -->
+      <div class="mech-card mt-5" data-aos="fade-up">
+        <div class="mech-icon"><i class="fas fa-users"></i></div>
+        <h3>🧑‍🤝‍🧑 5-LEVEL REFERRAL SYSTEM</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li>1️⃣ Direct referrals</li>
+              <li>2️⃣ Referral's referrals</li>
+              <li>3️⃣ 3rd level downline</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li>4️⃣ 4th level network</li>
+              <li>5️⃣ 5th level network</li>
+              <li>✨ Earn from all levels!</li>
+            </ul>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+  <!-- Add this at the end of the #earn-mechanics section -->
+
+<!-- Update the CSS -->
+<style>
+.btn-updates {
+  background: linear-gradient(45deg, #f9d900 30%, #ff9800 100%);
+  color: #1a1a1a;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-updates:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(249,217,0,0.4);
+}
+</style>
+  <!-- [Rest of your existing code: Meet the Team, Roadmap, etc.] -->
+  <!-- Meet the Team Section -->
+  <section id="team">
+    <div class="container">
+      <h2 data-aos="fade-up">Meet the Team</h2>
+      <div class="team-member" data-aos="flip-left">
+        <div class="team-icon"><i class="fas fa-user-ninja"></i></div>
+        <div class="team-name">WANG</div>
+        <div class="team-role">Founder & Developer</div>
+        <a href="https://t.me/huang_so" class="team-link" target="_blank">
+          <i class="fab fa-telegram-plane"></i> @huang_so
+        </a>
+      </div>
+      <div class="team-member" data-aos="flip-right">
+        <div class="team-icon"><i class="fas fa-user-astronaut"></i></div>
+        <div class="team-name">BRYE</div>
+        <div class="team-role">CO-Founder</div>
+        <a href="https://t.me/brye_06" class="team-link" target="_blank">
+          <i class="fab fa-telegram-plane"></i> @brye_06
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap" style="background:#1b1b1b; padding:70px 0;">
+    <div class="container">
+      <h2 data-aos="fade-up"
+          style="font-family:'Press Start 2P',cursive; color:#f9d900; text-align:center; margin-bottom:40px;">
+        Roadmap
+      </h2>
+      <div class="roadmap-container">
+        <div class="roadmap-item" data-aos="fade-up">
+          <div class="icon"><i class="fas fa-cogs"></i></div>
+          <span class="status completed"><i class="fas fa-check-circle"></i> Completed</span>
+          <h4>Q1 2025: Game Development</h4>
+          <p>Core development of game mechanics focused on play-to-earn logic, user progression, and smart contract integration.</p>
+        </div>
+        <div class="roadmap-item" data-aos="fade-up" data-aos-delay="150">
+          <div class="icon"><i class="fas fa-rocket"></i></div>
+          <span class="status in-progress"><i class="fas fa-spinner fa-spin"></i> In Progress</span>
+          <h4>Q2 2025: Game Launch & Marketing</h4>
+          <p>Official launch of the game with full core features. Community marketing begins through partnerships and influencer outreach.</p>
+        </div>
+        <div class="roadmap-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-network-wired"></i></div>
+          <span class="status not-started"><i class="fas fa-hourglass-start"></i> Not Started</span>
+          <h4>Q3 2025: Multiplayer & Token Planning</h4>
+          <p>Introduce multiplayer features, chat & social play, competitive ranking system with tap ticket rewards (BNB convertible). Begin token launch planning on BNB Mainnet and cross-chain research.</p>
+        </div>
+        <div class="roadmap-item" data-aos="fade-up" data-aos-delay="450">
+          <div class="icon"><i class="fas fa-globe"></i></div>
+          <span class="status not-started"><i class="fas fa-hourglass-start"></i> Not Started</span>
+          <h4>Q4 2025: Ecosystem Expansion</h4>
+          <p>Develop new crypto-rusher games using similar mechanics. Integrate third-party payments like GCash and PayMaya for seamless fiat onboarding beyond MetaMask and dApps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    AOS.init({ 
+      once: true,
+      duration: 800,
+      offset: 120
+    });
+  </script>
+
+
+
+<!-- Add this CSS -->
+<style>
+
+
+</style>
+<div class="community-widget">
+  <div class="telegram-pulse"></div>
+  <a href="https://t.me/crypto_rusher0" class="telegram-float" target="_blank">
+    <i class="fab fa-telegram-plane"></i>
+    <span class="hover-text">JOIN RUSHERS!!</span>
+  </a>
+</div>
+
+<style>
+.community-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.telegram-float {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: rgba(26,26,26,0.9);
+  border: 2px solid #f9d900;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(249,217,0,0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.telegram-float i {
+  color: #f9d900;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hover-text {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 1.5rem);
+  transform: translateY(-50%);
+  background: rgba(26,26,26,0.9);
+  color: #f9d900;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  border: 1px solid #f9d900;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.telegram-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(249,217,0,0.1);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Hover Effects */
+.telegram-float:hover {
+  transform: rotate(10deg) scale(1.05);
+  box-shadow: 0 0 35px rgba(249,217,0,0.4);
+}
+
+.telegram-float:hover .hover-text {
+  opacity: 1;
+  right: calc(100% + 1rem);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .community-widget {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .telegram-float {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  
+  .hover-text {
+    display: none;
+  }
+}
+</style>
+
+</body>
+</html>

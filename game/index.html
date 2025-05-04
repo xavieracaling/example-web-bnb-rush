@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="./../cry.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Click Rusher - Play Now</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset & Base */
+    body, h1, h2, h3, p {
+      margin: 0; 
+      padding: 0;
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+    html, body {
+      overscroll-behavior: none; /* Prevents scroll chaining */
+      width: 100%; 
+      min-height: 100%;
+      background: #1a1a1a;
+      color: #fff;
+      box-sizing: border-box; 
+      overflow-x: hidden;
+    }
+    body {
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      padding: 20px 10px;
+    }
+    canvas {
+      touch-action: pan-y;
+    }
+    /* Game Container */
+    .game-container {
+      border: 3px solid #ffcc00;
+      border-radius: 12px;
+      background: #000;
+      position: relative;
+      margin: 0 auto 3rem; /* Added bottom margin */
+      z-index: 0;
+    }
+
+    /* Text Headings */
+    #game h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #game p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Alerts */
+    .metamask-alert, .network-alert {
+      position: fixed; 
+      top:0; 
+      left:0;
+      width:100%; 
+      height:100%; 
+      background: rgba(0,0,0,0.95);
+      display:none; 
+      flex-direction:column;
+      align-items:center; 
+      justify-content:center;
+      text-align:center; 
+      padding:20px; 
+      z-index:1000;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 1200px;
+    }
+
+    .feature-card {
+      background: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #3d3d3d;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Section - FIXED POSITIONING */
+    #contact {
+      background: #2a2a2a;
+      padding: 2.5rem 1.5rem;
+      border-radius: 12px;
+      margin: 5rem auto 2rem; /* Increased top margin */
+      max-width: 800px;
+      position: relative;
+      width: 90%;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      background: #ffcc00;
+      color: #333;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #e5a900;
+    }
+
+    /* Core Game Elements */
+    .scale-wrapper {
+      width: 100%; 
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .game-container {
+      width: 100%; 
+      aspect-ratio: 16/9;
+    }
+    
+    #gameCanvas {
+      width: 100%; 
+      height: 100%;
+    }
+    
+    #loadingBar {
+      width: 50%; 
+      max-width:500px; 
+      height:20px;
+      background:#444; 
+      position:absolute;
+      top:50%; 
+      left:50%;
+      transform: translate(-50%,-50%);
+      border-radius:10px; 
+      overflow:hidden; 
+      z-index:0;
+    }
+    
+    #progressBarFull {
+      width:0%; 
+      height:100%; 
+      background:#ffcc00;
+      transition: width 0.2s ease-in-out;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 1200px) and (orientation: landscape) {
+      .game-container {
+        transform: scale(1.25);
+        transform-origin: top center;
+        margin-bottom: 5rem; /* Added space below scaled game */
+      }
+      
+      #contact {
+        margin-top: 13rem; /* Large desktop spacing */
+      }
+    }
+
+    @media (max-width: 768px) {
+      #game h2 {
+        font-size: 2rem;
+      }
+      
+      #game p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+      
+      .game-container {
+        aspect-ratio:9/16; 
+        max-width:100%;
+        max-height:90vh; 
+        margin:10px auto 2rem;
+      }
+      
+      .btn {
+        padding:10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      #contact {
+        margin: 3rem auto;
+        padding: 2rem 1rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Alerts -->
+  <div class="metamask-alert" id="metamaskAlert">
+    <h2><i class="fab fa-metamask"></i> MetaMask Required</h2>
+    <BR>
+    
+    <p>You don't have MetaMask installed.<br>Please install MetaMask to play the game.</p>
+    <BR>
+    <a href="https://metamask.io/download/" target="_blank" class="btn">Install MetaMask</a>
+  </div>
+
+  <div class="network-alert" id="networkAlert">
+    <h2><i class="fas fa-plug"></i> Network Required</h2>
+    <BR>
+    <p>Please connect to Binance Smart Chain Mainnet<br>to play</p>
+    <BR>
+    <button class="btn" id="connectNetworkBtn">Connect to Mainnet</button>
+    <p class="status-message" id="networkStatus"></p>
+  </div>
+
+  <!-- Game Content -->
+  <div class="game-content" id="gameContent">
+    <section id="game">
+      <h2>🎮 PlAY v3.0       </h2>
+      <p>Experience the game and start earning BNB by clicking and completing daily tasks!</p>
+      
+      <div class="scale-wrapper">
+        <div class="game-container">
+          <div id="loadingBar">
+            <div id="progressBarFull"></div>
+          </div>
+          <canvas id="gameCanvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section - MOVED BELOW GAME -->
+    <section id="contact">
+      <h2>📬 Contact Us</h2>
+      <p class="contact-text">Need assistance? Reach out to our support team</p>
+      <BR>
+      <div class="contact-buttons">
+        <a href="mailto:huangso_founder@bnb-clickrush.com" class="btn">
+          <i class="fas fa-envelope"></i> Email Support
+        </a>
+        <a href="https://t.me/crypto_rusher0" target="_blank" class="btn">
+          <i class="fab fa-telegram"></i> Telegram Group
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-coins feature-icon"></i>
+        <h3>Daily Rewards</h3>
+        <p>Collect BNB rewards every 24 hours through active gameplay</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt feature-icon"></i>
+        <h3>Secure Play</h3>
+        <p>Blockchain-powered secure transactions with MetaMask integration</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-user-friends feature-icon"></i>
+        <h3>Referral System</h3>
+        <p>Earn 15% from friends' earnings through our referral program</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL SCRIPT SECTION -->
+  <script>
+    // Network Configuration
+    const BSC_MAIN_NET = {
+      chainId: '0x38',
+      chainName: 'Binance Smart Chain',
+      rpcUrls: ['https://bsc-dataseed3.bnbchain.org'],
+      blockExplorerUrls: ['https://bscscan.com'],
+      nativeCurrency: { name: 'Binance Coin', symbol: 'BNB', decimals: 18 }
+    };
+
+    // DOM Elements
+    const metamaskAlert = document.getElementById('metamaskAlert');
+    const networkAlert = document.getElementById('networkAlert');
+    const gameContent = document.getElementById('gameContent');
+    const connectBtn = document.getElementById('connectNetworkBtn');
+    const statusMessage = document.getElementById('networkStatus');
+
+    let isInitialized = false, currentAccount = null;
+
+    async function initialize() {
+      if (isInitialized) return;
+      isInitialized = true;
+      
+      [metamaskAlert, networkAlert, gameContent].forEach(el => el.style.display = 'none');
+      
+      if (!window.ethereum?.isMetaMask) {
+        metamaskAlert.style.display = 'flex';
+        return;
+      }
+
+      try {
+        const chainId = await ethereum.request({ method: 'eth_chainId' });
+        if (chainId !== BSC_MAIN_NET.chainId) {
+          networkAlert.style.display = 'flex';
+        } else {
+          const accounts = await ethereum.request({ method: 'eth_accounts' });
+          currentAccount = accounts[0] || null;
+          gameContent.style.display = 'block';
+          loadUnityGame();
+        }
+      } catch (err) {
+        console.error('Initialization error:', err);
+        networkAlert.style.display = 'flex';
+      }
+    }
+
+    async function handleNetworkConnection() {
+      connectBtn.disabled = true;
+      statusMessage.textContent = 'Processing...';
+      
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: BSC_MAIN_NET.chainId }]
+        });
+      } catch (switchError) {
+        if (switchError.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [BSC_MAIN_NET]
+            });
+            window.location.reload();
+          } catch (addError) {
+            console.error('Add chain failed:', addError);
+          }
+        }
+        statusMessage.textContent = `Error: ${switchError.message}`;
+      } finally {
+        connectBtn.disabled = false;
+      }
+    }
+
+    connectBtn.addEventListener('click', handleNetworkConnection);
+    window.addEventListener('load', initialize);
+
+    if (window.ethereum) {
+      window.ethereum.on('chainChanged', (chainId) => {
+        chainId === BSC_MAIN_NET.chainId 
+          ? window.location.reload()
+          : networkAlert.style.display = 'flex';
+      });
+
+      // window.ethereum.on('accountsChanged', (accounts) => {
+      //   const newAccount = accounts[0] || null;
+      //   if (newAccount !== currentAccount) window.location.reload();
+      //   currentAccount = newAccount;
+      // });
+    }
+    let lastScrollY = 0;
+
+    function lockScroll() {
+      lastScrollY = window.scrollY;
+      setTimeout(() => {
+        window.scrollTo(0, lastScrollY); // re-lock scroll after browser reacts
+      }, 50); // delay allows browser to start scrolling, then cancel it
+    }
+
+  // Handle input focus
+  document.addEventListener('focusin', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      lockScroll();
+    }
+  });
+
+  // Restore scroll after input blur
+  document.addEventListener('focusout', () => {
+    setTimeout(() => {
+      lastScrollY = window.scrollY; // reset scroll lock baseline
+    }, 100); // give the browser time to adjust after keyboard closes
+  });
+
+  // Prevent scroll during keyboard open
+  window.addEventListener('scroll', () => {
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+      window.scrollTo(0, lastScrollY);
+    }
+  });
+    
+    function loadUnityGame() {
+      const canvas = document.getElementById('gameCanvas');
+      if (canvas.dataset.loaded) return;
+      canvas.dataset.loaded = true;
+
+      const progressBarFull = document.getElementById('progressBarFull');
+      const loadingBar = document.getElementById('loadingBar');
+      const script = document.createElement('script');
+      script.src = 'huanghorizon/Build/huanghorizon.loader.js';
+      
+      script.onload = () => {
+        createUnityInstance(canvas, {
+          loaderUrl: 'huanghorizon/Build/huanghorizon.loader.js',
+          dataUrl: 'huanghorizon/Build/huanghorizon.data',
+          frameworkUrl: 'huanghorizon/Build/huanghorizon.framework.js',
+          codeUrl: 'huanghorizon/Build/huanghorizon.wasm'
+        }, (progress) => {
+          progressBarFull.style.width = `${progress * 100}%`;
+        }).then(unityInstance => {
+          loadingBar.style.display = 'none';
+          window.web3UnityInstance = unityInstance;
+          window.addEventListener('resize', () => unityInstance.SetFullscreen(0));
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'f') unityInstance.SetFullscreen(1);
+          });
+          unityInstance.SendMessage('Init', 'LoadPlatform', 
+            /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? 1 : 0
+          );
+        }).catch(console.error);
+      };
+
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>
